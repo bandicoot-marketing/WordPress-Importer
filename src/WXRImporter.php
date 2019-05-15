@@ -753,8 +753,8 @@ class WXRImporter extends \WP_Importer {
 		if ( empty( $data ) ) {
 			return false;
 		}
-
-		$original_id = isset( $data['post_id'] )     ? (int) $data['post_id']     : 0;
+		// Create a fake post_id if no value found in the import set.
+		$original_id = isset( $data['post_id'] )     ? (int) $data['post_id']     : rand( 9999, 99999 );
 		$parent_id   = isset( $data['post_parent'] ) ? (int) $data['post_parent'] : 0;
 
 		// Have we already processed this?
